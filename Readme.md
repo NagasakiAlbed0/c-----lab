@@ -1,30 +1,13 @@
-Proiectul se numeste Snakegame ceia ce reprezinta un joc cu un sarpe ce se deplaseaza pe un teren.
-Regurile sunt ca acesta sa nu iasa din suprafata terenului si sa nu se joveasca de el.
+Acest proiect reprezintă implementarea unui joc clasic de Tic-Tac-Toe (X și O) folosind limbajul C++. Jocul permite doi jucători să alterneze pe o tablă de 3x3, plasând marcaje (X sau O) până când unul dintre jucători câștigă, completând o linie, o coloană sau o diagonală cu propriul marcaj, sau până când jocul se termină cu o remiză dacă tabla este plină.
 
-1. `struct Point` (în `point.hpp`):
-   - Descriere: Structura `Point` reprezintă un punct în spațiu bidimensional. Aceasta are două membre de date: `x` și `y`, care sunt coordonatele punctului.
-   - Obiecte: Obiectele de tip `Point` sunt utilizate pentru a specifica poziții în spațiu, cum ar fi poziția unei mere (Apple), poziția segmentelor unei șerpi (Snake), și punctele pentru desenare (Painter).
+Tabla (Tabla.hpp, Tabla.cpp):
 
-2. `class Apple` (în `apple.hpp`):
-   - Descriere: Clasa `Apple` reprezintă un măr care are o poziție specificată de un obiect de tip `Point`. Aceasta include constructori pentru inițializarea poziției și metode pentru obținerea poziției.
-   - Obiecte: Obiectele de tip `Apple` sunt folosite pentru a reprezenta merele care apar pe tablă în joc, având o poziție definită în spațiu.
+Reprezintă tabla de joc sub forma unei matrice 3x3.
+Am creat metode pentru a desena tabla, a plasa marcaje și a verifica câștigătorul după fiecare mutare.
+Joc (Joc.hpp, Joc.cpp):
 
-3. `enum class Direction` (în `direction.hpp`):
-   - Descriere: Enumerația `Direction` definește patru direcții posibile pentru mișcarea unui șarpe: `Top`, `Left`, `Right`, și `Bottom`.
-   - Obiecte: Obiectele de tip `Direction` sunt utilizate pentru a specifica direcția în care se mișcă șarpele (Snake).
+Găzduiește logica principală a jocului, gestionând rândul fiecărui jucător și fluxul jocului.
+Am implementat o metodă care comută între jucători după fiecare mutare și determină când se termină jocul.
+main.cpp:
 
-4. `class Snake` (în `snake.hpp`):
-   - Descriere: Clasa `Snake` reprezintă un șarpe care are o serie de segmente (până la 100), fiecare având o poziție specificată de un obiect de tip `Point`. Include metode pentru mișcare, obținerea dimensiunii și poziției, precum și pentru a mânca un măr.
-   - Obiecte: Obiectele de tip `Snake` sunt utilizate pentru a reprezenta șarpele în joc, gestionând pozițiile segmentelor sale și logica de mișcare.
-
-5. `class Board` (în `board.hpp`):
-   - Descriere: Clasa `Board` reprezintă tabla de joc, având o lățime și o înălțime specificate. Aceste dimensiuni definesc spațiul în care se desfășoară jocul.
-   - Obiecte: Obiectele de tip `Board` sunt folosite pentru a reprezenta și gestiona dimensiunile tablei de joc în cadrul aplicației.
-
-6. `class GameEngine` (în `game_engine.hpp`):
-   - Descriere: Clasa `GameEngine` este motorul jocului, care conține obiectele `Apple`, `Snake`, și `Board`. Aceasta gestionează inițializarea jocului și rularea lui.
-   - Obiecte: Obiectele de tip `GameEngine` sunt folosite pentru a controla și coordona jocul, inclusiv logica de inițializare și execuție.
-
-7. `class Painter` (în `painter.hpp`):
-   - Descriere: Clasa `Painter` este responsabilă pentru desenarea pe tablă și scrierea de text. Utilizează obiecte de tip `Point` pentru a specifica pozițiile.
-   - Obiecte: Obiectele de tip `Painter` sunt folosite pentru a desena imagini și a scrie texte pe tablă, utilizând coordonate specifice.
+Acesta este punctul de intrare al programului. Am creat un obiect de tip Joc și am lansat jocul prin intermediul metodei principale din clasa Joc.
