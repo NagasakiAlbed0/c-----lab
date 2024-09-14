@@ -1,0 +1,12 @@
+// structuri.hpp
+#ifndef STRUCTURI_HPP
+#define STRUCTURI_HPP
+
+struct Persoana {
+    std::string nume;
+    int varsta;
+    
+    Persoana(std::string n, int v) : nume(n), varsta(v) {}
+};
+
+#endif // STRUCTURI_HPP
