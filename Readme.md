@@ -1,16 +1,9 @@
-Acest proiect s enumeste ,,TRY THREE"
-Proiectul reprezintă implementarea unui joc clasic de Tic-Tac-Toe (X și O) folosind limbajul C++. 
-REgulile:Jocul permite doi jucători să alterneze pe o tablă de 3x3, plasând marcaje (X sau O) până când unul dintre jucători câștigă, completând o linie, o coloană sau o diagonală cu propriul marcaj, sau până când jocul se termină cu o remiză dacă tabla este plină.
-
-Tabla (Tabla.hpp, Tabla.cpp):
-
-Reprezintă tabla de joc sub forma unei matrice 3x3.
-Am creat metode pentru a desena tabla, a plasa marcaje și a verifica câștigătorul după fiecare mutare.
-
-Joc (Joc.hpp, Joc.cpp):
-
-Găzduiește logica principală a jocului, gestionând rândul fiecărui jucător și fluxul jocului.
-Am implementat o metodă care comută între jucători după fiecare mutare și determină când se termină jocul.
-main.cpp:
-
-Acesta este punctul de intrare al programului. Am creat un obiect de tip Joc și am lansat jocul prin intermediul metodei principale din clasa Joc.
+DEscrierea proiectului meu 
+Denumirea:(trythree)
+Acest proiect implementează un joc simplu de X și 0 (Tic-Tac-Toe) în C++. Jucătorii introduc pozițiile pe tablă, iar jocul se încheie când unul dintre jucători câștigă sau când jocul se termină la egalitate.
+Structura fisierelor
+-Joc.cpp și Joc.h: Conțin logica jocului, gestionarea schimbării jucătorilor și secvențele de joc.
+-Tabla.cpp și Tabla.h: Implementează funcțiile legate de desenarea și actualizarea tablei de joc.
+-Main.cpp: Punctul de intrare în aplicație, unde se inițializează jocul și se rulează mecanica principală.
+-Makefile: Fișierul de construcție pentru a automatiza compilarea și legarea proiectului.
+-.gitignore: Fișier pentru a ignora fișierele inutile în Git, precum fișierele obiect (*.o) și executabilele (*.exe).
