@@ -1,19 +1,11 @@
-#ifndef JOC_H
-#define JOC_H
+#include "Joc.h"
 
-#include "Tabla.h"
+int main() {
+    // Inițializează jocul cu jucătorul 1 (X)
+    Joc joc('X');
 
-using namespace std;
+    // Pornește jocul
+    joc.incepeJoc();
 
-class Joc {
-public:
-    Tabla tabla;
-    char marcaj_curent;
-    int jucator_curent;
-
-    Joc(char marcaj_jucator1);
-    void schimbaJucator();
-    void incepeJoc();
-};
-
-#endif
+    return 0;
+}
