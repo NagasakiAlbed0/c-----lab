@@ -1,50 +1,44 @@
-#include "Joc.h"
+// Constructor implicit
+Joc::Joc() : marcaj_curent('X'), jucator_curent(1) {}
 
-using namespace std;
+// Constructor cu parametri
+Joc::Joc(char marcaj_jucator1) : marcaj_curent(marcaj_jucator1), jucator_curent(1) {}
 
-Joc::Joc(char marcaj_jucator1) {
-    marcaj_curent = marcaj_jucator1;
-    jucator_curent = 1;
+// Constructor de copiere
+Joc::Joc(const Joc& other) {
+    this->tabla = other.tabla;
+    this->marcaj_curent = other.marcaj_curent;
+    this->jucator_curent = other.jucator_curent;
 }
 
-void Joc::schimbaJucator() {
-    jucator_curent = (jucator_curent == 1) ? 2 : 1;
-    marcaj_curent = (marcaj_curent == 'X') ? 'O' : 'X';
+// Operator de copiere
+Joc& Joc::operator=(const Joc& other) {
+    if (this != &other) {
+        this->tabla = other.tabla;
+        this->marcaj_curent = other.marcaj_curent;
+        this->jucator_curent = other.jucator_curent;
+    }
+    return *this;
 }
 
-void Joc::incepeJoc() {
-    tabla.deseneazaTabla();
-    int castigator = 0;
+// Operator de comparatie
+bool Joc::operator==(const Joc& other) const {
+    return (this->tabla == other.tabla &&
+            this->marcaj_curent == other.marcaj_curent &&
+            this->jucator_curent == other.jucator_curent);
+}
 
-    for (int i = 0; i < 9; i++) {
-        cout << "Este rândul jucătorului " << jucator_curent << ". Introdu poziția: ";
-        int pozitie;
-        cin >> pozitie;
+// Operator << pentru afisare
+ostream& operator<<(ostream& os, const Joc& joc) {
+    os << "Jucator curent: " << joc.jucator_curent << " cu marcajul " << joc.marcaj_curent;
+    return os;
+}
 
-        if (pozitie < 1 || pozitie > 9) {
-            cout << "Poziție invalidă! Încearcă din nou.\n";
-            i--;
-            continue;
-        }
-
-        if (!tabla.puneMarcaj(pozitie, marcaj_curent)) {
-            cout << "Poziție ocupată! Încearcă din nou.\n";
-            i--;
-            continue;
-        }
-
-        tabla.deseneazaTabla();
-
-        castigator = tabla.verificaCastigator();
-        if (castigator != 0) {
-            cout << "Jucătorul " << jucator_curent << " a câștigat!\n";
-            break;
-        }
-
-        schimbaJucator();
-    }
-
-    if (castigator == 0) {
-        cout << "Egalitate!\n";
-    }
+// Operator >> pentru citire
+istream& operator>>(istream& is, Joc& joc) {
+    cout << "Introdu marcajul jucatorului: ";
+    is >> joc.marcaj_curent;
+    cout << "Introdu jucatorul curent (1 sau 2): ";
+    is >> joc.jucator_curent;
+    return is;
 }
