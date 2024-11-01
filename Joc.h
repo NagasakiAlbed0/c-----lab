@@ -1,26 +1,34 @@
+#ifndef JOC_H
+#define JOC_H
+
+#include "Tabla.h"
+#include <iostream>
+
+using namespace std;
+
 class Joc {
 public:
     Tabla tabla;
     char marcaj_curent;
     int jucator_curent;
 
-    // Constructori
-    Joc();  // Constructor implicit
-    Joc(char marcaj_jucator1);  // Constructor cu parametri
-    Joc(const Joc& other);  // Constructor de copiere
+    
+    Joc(char marcaj_jucator1 = 'X');
+    Joc(const Joc& other); 
 
-    // Operator de copiere
+    
     Joc& operator=(const Joc& other);
 
-    // Operator de comparatie
+    
     bool operator==(const Joc& other) const;
 
-    // Operator << pentru afisare
+    
     friend ostream& operator<<(ostream& os, const Joc& joc);
 
-    // Operator >> pentru citire
     friend istream& operator>>(istream& is, Joc& joc);
 
     void schimbaJucator();
     void incepeJoc();
 };
+
+#endif
