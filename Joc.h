@@ -2,31 +2,16 @@
 #define JOC_H
 
 #include "Tabla.h"
-#include <iostream>
-
-using namespace std;
+#include <memory>
+#include <string>
 
 class Joc {
 public:
-    Tabla tabla;
-    char marcaj_curent;
+    std::unique_ptr<Tabla> tabla;
+    std::string marcaj_curent;
     int jucator_curent;
 
-    
-    Joc(char marcaj_jucator1 = 'X');
-    Joc(const Joc& other); 
-
-    
-    Joc& operator=(const Joc& other);
-
-    
-    bool operator==(const Joc& other) const;
-
-    
-    friend ostream& operator<<(ostream& os, const Joc& joc);
-
-    friend istream& operator>>(istream& is, Joc& joc);
-
+    Joc(std::string marcaj_jucator1);
     void schimbaJucator();
     void incepeJoc();
 };
