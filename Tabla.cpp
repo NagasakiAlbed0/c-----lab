@@ -1,78 +1,21 @@
 #include "Tabla.h"
+#include <algorithm>
 
-using namespace std;
-
-Tabla::Tabla() {
+Tabla::Tabla() : tabla(9, "") {
     int counter = 1;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            tabla[i][j] = '0' + counter;
-            counter++;
-        }
-    }
-}
-Tabla::Tabla(const Tabla& other) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            tabla[i][j] = other.tabla[i][j];
-        }
-    }
-}
-
-Tabla& Tabla::operator=(const Tabla& other) {
-    if (this != &other) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                tabla[i][j] = other.tabla[i][j];
-            }
-        }
-    }
-    return *this;
-}
-bool Tabla::operator==(const Tabla& other) const {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (tabla[i][j] != other.tabla[i][j]) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-ostream& operator<<(ostream& os, const Tabla& tabla) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            os << tabla.tabla[i][j] << " ";
-        }
-        os << endl;
-    }
-    return os;
-}
-
-istream& operator>>(istream& is, Tabla& tabla) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            is >> tabla.tabla[i][j];
-        }
-    }
-    return is;
+    std::generate(tabla.begin(), tabla.end(), [&counter]() { return std::to_string(counter++); });
 }
 
 void Tabla::deseneazaTabla() {
-    cout << " " << tabla[0][0] << " | " << tabla[0][1] << " | " << tabla[0][2] << endl;
-    cout << "---|---|---" << endl;
-    cout << " " << tabla[1][0] << " | " << tabla[1][1] << " | " << tabla[1][2] << endl;
-    cout << "---|---|---" << endl;
-    cout << " " << tabla[2][0] << " | " << tabla[2][1] << " | " << tabla[2][2] << endl;
+    for (int i = 0; i < 9; i += 3) {
+        std::cout << " " << tabla[i] << " | " << tabla[i + 1] << " | " << tabla[i + 2] << std::endl;
+        if (i < 6) std::cout << "---|---|---" << std::endl;
+    }
 }
 
-bool Tabla::puneMarcaj(int pozitie, char marcaj) {
-    int rand = (pozitie - 1) / 3;
-    int coloana = (pozitie - 1) % 3;
-
-    if (tabla[rand][coloana] != 'X' && tabla[rand][coloana] != 'O') {
-        tabla[rand][coloana] = marcaj;
+bool Tabla::puneMarcaj(int pozitie, const std::string& marcaj) {
+    if (tabla[pozitie - 1] != "X" && tabla[pozitie - 1] != "O") {
+        tabla[pozitie - 1] = marcaj;
         return true;
     }
     return false;
@@ -80,15 +23,13 @@ bool Tabla::puneMarcaj(int pozitie, char marcaj) {
 
 int Tabla::verificaCastigator() {
     for (int i = 0; i < 3; i++) {
-        if (tabla[i][0] == tabla[i][1] && tabla[i][1] == tabla[i][2])
+        if (tabla[i * 3] == tabla[i * 3 + 1] && tabla[i * 3 + 1] == tabla[i * 3 + 2])
             return 1;
-        if (tabla[0][i] == tabla[1][i] && tabla[1][i] == tabla[2][i])
+        if (tabla[i] == tabla[i + 3] && tabla[i + 3] == tabla[i + 6])
             return 1;
     }
-    if (tabla[0][0] == tabla[1][1] && tabla[1][1] == tabla[2][2])
-        return 1;
-    if (tabla[0][2] == tabla[1][1] && tabla[1][1] == tabla[2][0])
-        return 1;
+    if (tabla[0] == tabla[4] && tabla[4] == tabla[8]) return 1;
+    if (tabla[2] == tabla[4] && tabla[4] == tabla[6]) return 1;
 
     return 0;
 }
