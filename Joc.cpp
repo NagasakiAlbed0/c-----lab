@@ -1,19 +1,19 @@
 #include "Joc.h"
 #include <iostream>
 
-Joc::Joc(std::string marcaj_jucator1) 
+ Joc::Joc(std::string marcaj_jucator1) 
     : tabla(std::make_unique<Tabla>()), marcaj_curent(marcaj_jucator1), jucator_curent(1) {}
 
 void Joc::schimbaJucator() {
     jucator_curent = (jucator_curent == 1) ? 2 : 1;
     marcaj_curent = (marcaj_curent == "X") ? "O" : "X";
-}
+  }
 
-void Joc::incepeJoc() {
+    void Joc::incepeJoc() {
     tabla->deseneazaTabla();
-    int castigator = 0;
+  int castigator = 0;
 
-    for (int i = 0; i < 9; i++) {
+       for (int i = 0; i < 9; i++) {
         std::cout << "Este rândul jucătorului " << jucator_curent << ". Introdu poziția: ";
         int pozitie;
         std::cin >> pozitie;
@@ -22,9 +22,9 @@ void Joc::incepeJoc() {
             std::cout << "Poziție invalidă! Încearcă din nou.\n";
             i--;
             continue;
-        }
+         }
 
-        if (!tabla->puneMarcaj(pozitie, marcaj_curent)) {
+if (!tabla->puneMarcaj(pozitie, marcaj_curent)) {
             std::cout << "Poziție ocupată! Încearcă din nou.\n";
             i--;
             continue;
@@ -32,14 +32,14 @@ void Joc::incepeJoc() {
 
         tabla->deseneazaTabla();
 
-        castigator = tabla->verificaCastigator();
+     castigator = tabla->verificaCastigator();
         if (castigator != 0) {
             std::cout << "Jucătorul " << jucator_curent << " a câștigat!\n";
             break;
-        }
+         }
 
-        schimbaJucator();
-    }
+         schimbaJucator();
+ }
 
     if (castigator == 0) {
         std::cout << "Egalitate!\n";
