@@ -14,6 +14,7 @@ public:
     Joc(std::string marcaj_jucator1);
     void schimbaJucator();
     void incepeJoc();
+    void salveazaScor(const std::string& castigator);
 };
 
 #endif
