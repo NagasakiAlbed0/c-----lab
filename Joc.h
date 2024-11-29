@@ -1,12 +1,12 @@
 #ifndef JOC_H
 #define JOC_H
 
- #include "Tabla.h"
-  #include <memory>
+#include "Tabla.h"
+#include <memory>
 #include <string>
 
 class Joc {
-    public:
+public:
     std::unique_ptr<Tabla> tabla;
     std::string marcaj_curent;
     int jucator_curent;
@@ -16,4 +16,4 @@ class Joc {
     void incepeJoc();
 };
 
- #endif
+#endif
