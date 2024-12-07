@@ -1,9 +1,31 @@
-DEscrierea proiectului meu 
-Denumirea:(trythree)
-Acest proiect implementează un joc simplu de X și 0 (Tic-Tac-Toe) în C++. Jucătorii introduc pozițiile pe tablă, iar jocul se încheie când unul dintre jucători câștigă sau când jocul se termină la egalitate.
-Structura fisierelor
--Joc.cpp și Joc.h: Conțin logica jocului, gestionarea schimbării jucătorilor și secvențele de joc.
--Tabla.cpp și Tabla.h: Implementează funcțiile legate de desenarea și actualizarea tablei de joc.
--Main.cpp: Punctul de intrare în aplicație, unde se inițializează jocul și se rulează mecanica principală.
--Makefile: Fișierul de construcție pentru a automatiza compilarea și legarea proiectului.
--.gitignore: Fișier pentru a ignora fișierele inutile în Git, precum fișierele obiect (*.o) și executabilele (*.exe).
+# Proiect: Tic-Tac-Toe (X si 0)
+
+## Descrierea Proiectului
+Denumirea proiectului: **trythree**  
+Acest proiect implementeaza un joc simplu de X si 0 (Tic-Tac-Toe) utilizand limbajul C++. Jocul permite doi jucatori sa introduca pozitiile pe tabla, iar jocul se incheie atunci cand unul dintre jucatori castiga completand o linie, o coloana sau o diagonala, sau cand se termina cu o remiza (egalitate) daca tabla este completa.
+
+## Structura Fisierelor
+- **Joc.cpp si Joc.h**: Contin logica jocului, gestionarea schimbarii jucatorilor si implementarea secventelor principale de joc.
+- **Tabla.cpp si Tabla.h**: Implementeaza functionalitatile legate de desenarea tablei, plasarea marcajelor si verificarea castigatorului.
+- **Main.cpp**: Punctul de intrare in aplicatie, unde se initializeaza jocul si se ruleaza mecanica principala.
+- **Makefile**: Fisier de constructie care automatizeaza compilarea si legarea aplicatiei, inclusiv testele.
+- **.gitignore**: Fisier care ignora fisierele inutile pentru Git, precum fisierele obiect (`*.o`) si executabilele (`*.exe`).
+- **tests/**: Director care contine fisierele de testare ale claselor proiectului.
+
+## Regulile Jocului
+1. Jocul este pentru doi jucatori.
+2. Fiecare jucator isi alege pe rand o pozitie pe tabla, introducand un numar intre 1 si 9.
+3. Primul jucator foloseste marcajul "X", iar al doilea foloseste "O".
+4. Jocul se incheie atunci cand unul dintre jucatori completeaza o linie, o coloana sau o diagonala cu propriul marcaj sau cand toate pozitiile sunt ocupate, iar rezultatul este egalitate.
+
+## Dependinte
+- Compilator: **g++**
+- Biblioteci terte utilizate: **Catch2** (pentru testare)
+- Sistem de operare: Linux sau Windows (cu suport pentru Makefile)
+
+## Modul de Construire a Aplicatiei
+1. Clonati proiectul din GitHub:  
+   ```bash
+   git clone <URL-repository>
+   cd <repository>
+   git checkout lab06
